@@ -11,7 +11,7 @@ SERVER_PID=$!
 sleep 2
 
 # Ouvrir la page dans le navigateur par défaut (Ubuntu)
-xdg-open "http://localhost:3000" >/dev/null 2>&1 &
+xdg-open "https://fergouchyahya.github.io/NDI/" >/dev/null 2>&1 &
 
 # Attendre que le serveur se termine (Ctrl+C dans le terminal pour tout couper)
 wait "$SERVER_PID"

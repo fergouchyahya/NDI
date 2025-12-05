@@ -33,20 +33,11 @@
 **Run locally (quick)**
 1. From the `NDI` folder start a static server:
 ```bash
-cd /home/fergyah/Projects/NDL/NDI
-python3 -m http.server 8000
+../run.sh
 ```
-2. Open the landing page: `http://localhost:8000/index.html` and click the "Découvrir..." button to start the quiz.
+2. Open the landing page: "https://fergouchyahya.github.io/NDI/" .
 
-**Testing & debugging tips**
-- Open the browser DevTools Console to watch for module import errors and runtime exceptions.
-- Check `Application -> Local Storage` to inspect the stored keys (`villageTechno_attempts_v1`, `attempts_<islandId>`).
-- If quiz UI is unresponsive, confirm `js/main.js` module loaded successfully (no missing export errors). See `js/core/api.js` previously required `sendAttemptToServer` export — this was aligned with `main.js`.
 
-**Possible improvements**
-- Add a small server endpoint to persist attempts to a database instead of `localStorage`.
-- Improve the UI/UX for keyboard navigation and accessibility.
-- Add unit tests for scoring logic (`js/core/scoring.js`).
 
 **License & Attribution**
 - This repository contains educational/demo code.Open License
