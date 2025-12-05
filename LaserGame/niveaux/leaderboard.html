@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -64,7 +65,8 @@
             background: linear-gradient(135deg, #0f3460, #16213e);
         }
 
-        th, td {
+        th,
+        td {
             padding: 20px;
             text-align: center;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -90,9 +92,17 @@
             font-weight: bold;
         }
 
-        .rank-1 { color: #FFD700; }
-        .rank-2 { color: #C0C0C0; }
-        .rank-3 { color: #CD7F32; }
+        .rank-1 {
+            color: #FFD700;
+        }
+
+        .rank-2 {
+            color: #C0C0C0;
+        }
+
+        .rank-3 {
+            color: #CD7F32;
+        }
 
         .total {
             font-size: 1.3em;
@@ -150,15 +160,16 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>🏆 LEADERBOARD 🏆</h1>
-        
+
         <div class="last-game">
             <h2>Ta Dernière Partie</h2>
             <p id="lastGame">Aucune partie jouée</p>
         </div>
-        
+
         <table>
             <thead>
                 <tr>
@@ -173,11 +184,11 @@
         </table>
 
         <div class="buttons">
-            <button class="btn replay-btn" onclick="window.location.href='https://tvprogrammeur.github.io/La-nuit-de-l-info/'">
+            <button class="btn replay-btn" onclick="window.location.href='https://fergouchyahya.github.io/NDI/'">
                 FIN RETOUR A L'ACCUEIL
             </button>
             <button class="btn reset-btn" onclick="resetLeaderboard()">
-                🗑️ RÉINITIALISER
+                RÉINITIALISER
             </button>
         </div>
     </div>
@@ -196,7 +207,7 @@
         function loadLeaderboard() {
             const allGames = JSON.parse(localStorage.getItem('allGames') || '[]');
             const tbody = document.getElementById('leaderboard');
-            
+
             if (allGames.length === 0) {
                 tbody.innerHTML = `
                     <tr>
@@ -226,7 +237,7 @@
                 const rank = index + 1;
                 const rankClass = rank <= 3 ? `rank-${rank}` : '';
                 const rankDisplay = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : rank;
-                
+
                 return `
                     <tr>
                         <td class="rank ${rankClass}">${rankDisplay}</td>
@@ -252,4 +263,5 @@
         loadLeaderboard();
     </script>
 </body>
+
 </html>
