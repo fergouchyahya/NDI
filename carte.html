@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+
+<body>
+    <style>
+        body {
+            background-color: rgb(92, 138, 218);
+        }
+    </style>
+    <div class="w3-container">
+        <img src="mapLinux.png" class="w3-image w3-hover-opacity"
+            onclick="document.getElementById('id_mapLinux').style.display='block'" width="500">
+        <img src="mapDechets.png" class="w3-image w3-hover-opacity"
+            onclick="document.getElementById('id_mapDechets').style.display='block'" width="500">
+        <img src="mapNuclaire.png" class="w3-image w3-hover-opacity"
+            onclick="document.getElementById('id_mapNuclaire').style.display='block'" width="500">
+        <img src="mapPedagogue.png" class="w3-image w3-hover-opacity"
+            onclick="document.getElementById('id_mapPedagogue').style.display='block'" width="500">
+        <img src="lazer.png" class="w3-image w3-hover-opacity"
+            onclick="window.open('./LaserGame/niveaux/energie_total/index.html', '_blank')" width="500">
+    </div>
+
+    <!-- MODAL LINUX -->
+    <div id="id_mapLinux" class="w3-modal">
+        <div class="w3-modal-content w3-animate-top w3-card-4">
+            <header class="w3-container" style="background-color: #FFC63C;">
+                <span onclick="document.getElementById('id_mapLinux').style.display='none'"
+                    class="w3-button w3-display-topright">&times;</span>
+                <h2>Logiciels libres & autonomie</h2>
+            </header>
+            <div class="w3-container">
+                <p id="linuxCount"></p>
+                <div id="linuxTab"></div>
+            </div>
+            <footer class="w3-container" style="background-color: #FFC63C;">
+
+            </footer>
+        </div>
+    </div>
+
+    <!-- MODAL DECHETS -->
+    <div id="id_mapDechets" class="w3-modal">
+        <div class="w3-modal-content w3-animate-top w3-card-4">
+            <header class="w3-container" style="background-color: #FFC63C;">
+                <span onclick="document.getElementById('id_mapDechets').style.display='none'"
+                    class="w3-button w3-display-topright">&times;</span>
+                <h2>Réemploi matériel / Déchets</h2>
+            </header>
+            <div class="w3-container">
+                <p id="dechetsCount"></p>
+                <div id="dechetsTab"></div>
+            </div>
+            <footer class="w3-container" style="background-color: #FFC63C;">
+
+            </footer>
+        </div>
+    </div>
+
+    <!-- MODAL NUCLEAIRE / SOBRIÉTÉ NUMÉRIQUE -->
+    <div id="id_mapNuclaire" class="w3-modal">
+        <div class="w3-modal-content w3-animate-top w3-card-4">
+            <header class="w3-container" style="background-color: #FFC63C;">
+                <span onclick="document.getElementById('id_mapNuclaire').style.display='none'"
+                    class="w3-button w3-display-topright">&times;</span>
+                <h2>Sobriété numérique</h2>
+            </header>
+            <div class="w3-container">
+                <p id="nucleaireCount"></p>
+                <div id="nucleaireTab"></div>
+            </div>
+            <footer class="w3-container" style="background-color: #FFC63C;">
+
+            </footer>
+        </div>
+    </div>
+
+    <!-- MODAL PÉDAGOGUE / COMMUNAUTÉ -->
+    <div id="id_mapPedagogue" class="w3-modal">
+        <div class="w3-modal-content w3-animate-top w3-card-4">
+            <header class="w3-container" style="background-color: #FFC63C;">
+                <span onclick="document.getElementById('id_mapPedagogue').style.display='none'"
+                    class="w3-button w3-display-topright">&times;</span>
+                <h2>Pédagogie & communauté</h2>
+            </header>
+            <div class="w3-container">
+                <p id="pedagogueCount"></p>
+                <div id="pedagogueTab"></div>
+            </div>
+            <footer class="w3-container" style="background-color: #FFC63C;">
+
+            </footer>
+        </div>
+    </div>
+
+    <style>
+        /* Juste pour un affichage un peu sympa */
+        #linuxTab div,
+        #dechetsTab div,
+        #nucleaireTab div,
+        #pedagogueTab div {
+            margin-top: 10px;
+        }
+    </style>
+
+    <!-- SCRIPT MODIFIÉ POUR UTILISER LOCALSTORAGE -->
+    <script>
+        function loadAttempts(storageKey, countElementId, containerElementId) {
+            // Récupère les données depuis localStorage
+            const data = localStorage.getItem(storageKey);
+
+            if (!data) {
+                console.error('Aucune donnée trouvée pour', storageKey);
+                return;
+            }
+
+            const personnes = JSON.parse(data);
+            const nombrePersonnes = personnes.length;
+
+            const countEl = document.getElementById(countElementId);
+            const container = document.getElementById(containerElementId);
+
+            if (!countEl || !container) {
+                console.error('Élément introuvable pour', countElementId, containerElementId);
+                return;
+            }
+
+            // Affiche le nombre de personnes
+            countEl.textContent = `Nombre de personnes : ${nombrePersonnes}`;
+
+            // Vide le conteneur
+            container.innerHTML = '';
+
+            // Création des cartes pour chaque personne
+            for (let i = 0; i < nombrePersonnes; i++) {
+                const person = personnes[i];
+
+                const bloc = document.createElement('div');
+                bloc.className = 'w3-card w3-padding w3-margin';
+
+                const nom = document.createElement('p');
+                nom.innerHTML = `<strong>Nom :</strong> ${person.personName}`;
+                bloc.appendChild(nom);
+
+                const bio = document.createElement('p');
+                bio.innerHTML = `<strong>Bio :</strong> ${person.personBio || ''}`;
+                bloc.appendChild(bio);
+
+                const island = document.createElement('p');
+                island.innerHTML = `<strong>Île :</strong> ${person.islandName}`;
+                bloc.appendChild(island);
+
+                const skillsTitle = document.createElement('p');
+                skillsTitle.innerHTML = '<strong>Compétences :</strong>';
+                bloc.appendChild(skillsTitle);
+
+                const ul = document.createElement('ul');
+                for (let j = 0; j < person.topSkills.length; j++) {
+                    const li = document.createElement('li');
+                    const skill = person.topSkills[j];
+                    li.textContent = `${skill.id} (niveau ${skill.level})`;
+                    ul.appendChild(li);
+                }
+                bloc.appendChild(ul);
+
+                container.appendChild(bloc);
+            }
+        }
+
+        // Initialisation des données dans localStorage
+        // (À exécuter une seule fois pour initialiser les données)
+        function initializeLocalStorage() {
+            // Données de test
+            const testData = {
+                "attempts_free_software_autonomy": [
+                    {
+                        personName: "Jean Dupont",
+                        personBio: "Expert en logiciels libres",
+                        islandName: "Île 1",
+                        topSkills: [
+                            { id: "Linux", level: "Avancé" },
+                            { id: "Git", level: "Intermédiaire" }
+                        ]
+                    }
+                ],
+                "attempts_hardware_reuse": [
+                    {
+                        personName: "Marie Martin",
+                        personBio: "Spécialiste en réemploi de matériel",
+                        islandName: "Île 2",
+                        topSkills: [
+                            { id: "Électronique", level: "Expert" },
+                            { id: "Réparation", level: "Avancé" }
+                        ]
+                    }
+                ],
+                "attempts_digital_sobriety": [
+                    {
+                        personName: "Pierre Durand",
+                        personBio: "Expert en sobriété numérique",
+                        islandName: "Île 3",
+                        topSkills: [
+                            { id: "Optimisation", level: "Expert" },
+                            { id: "Éco-conception", level: "Avancé" }
+                        ]
+                    }
+                ],
+                "attempts_education_community": [
+                    {
+                        personName: "Sophie Garnier",
+                        personBio: "Pédagogue expérimentée",
+                        islandName: "Île 4",
+                        topSkills: [
+                            { id: "Formation", level: "Expert" },
+                            { id: "Animation", level: "Avancé" }
+                        ]
+                    }
+                ]
+            };
+
+            // Sauvegarde des données dans localStorage
+            Object.entries(testData).forEach(([key, value]) => {
+                if (!localStorage.getItem(key)) {
+                    localStorage.setItem(key, JSON.stringify(value));
+                    console.log(`Données initialisées pour ${key}`);
+                }
+            });
+        }
+
+        // Appel à la fonction d'initialisation une seule fois
+        // (Commentez cette ligne si vous avez déjà initialisé les données)
+        //initializeLocalStorage();
+
+        // Chargement des données pour chaque catégorie
+        document.addEventListener('DOMContentLoaded', () => {
+            loadAttempts('attempts_free_software_autonomy', 'linuxCount', 'linuxTab');
+            loadAttempts('attempts_hardware_reuse', 'dechetsCount', 'dechetsTab');
+            loadAttempts('attempts_digital_sobriety', 'nucleaireCount', 'nucleaireTab');
+            loadAttempts('attempts_education_community', 'pedagogueCount', 'pedagogueTab');
+        });
+    </script>
+</body>
+
+</html>

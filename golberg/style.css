@@ -1,0 +1,39 @@
+body {
+    font-family: Arial;
+}
+
+svg {
+    position: fixed;
+    right: 0;
+    background-image: url("rogner\ elec\ upscale.jpg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid #000000;
+    width: 75vw;
+    height:80vh
+}
+
+rect {
+    fill: white;
+}
+
+#lampe1 {
+    position: fixed;
+    left: 0;
+    float: left;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+        width: 15vw;
+}
+
+#lampe2 {
+    position: fixed;
+    left: 0;
+    display: none;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 15vw;
+}

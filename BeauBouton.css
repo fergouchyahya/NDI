@@ -1,0 +1,173 @@
+.col1 {
+    background-color: black;
+    color: white;
+}
+
+.col2 {
+    background-color: white;
+    color: black;
+}
+
+body {
+    background-image: linear-gradient(45deg, #FF6B9D, #FFA500, #FFD700, #00CED1);
+}
+
+header {
+    top: 0%;
+    left: 0%;
+    position:fixed;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0%;
+    z-index: 10;
+}
+
+
+
+
+.test{
+    border-radius: 100%;
+}
+
+header > button {
+    padding: 1%;
+    margin-left: 1%;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    transition: border-radius 0.2s ease;
+}
+
+header > button:hover {
+    border-radius: 10%;
+    box-shadow: 0 0 100px rgba(255, 255, 255, 0.3);
+}
+
+h1 {
+    margin-right: 5%;
+    font-size: 200%;
+    color: black;
+}
+
+.colBW {
+    background: linear-gradient(135deg, black 0%, white 100%);
+}
+
+.colDA {
+    background: linear-gradient(135deg, #FEDC2A 0%, #8B538F 100%);
+}
+
+.colFUN {
+    background-image: linear-gradient(45deg, #FF6B9D, #FFA500, #FFD700, #00CED1);
+
+}
+
+.intro {
+    margin-top: 20%;
+    margin-left: 5%;
+    margin-right: 5%;
+    text-align: center;
+    font-size: 120%;
+
+    background: rgba(255, 255, 255, 0.356);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.7px);
+    -webkit-backdrop-filter: blur(7.7px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.avis_all {
+    margin-top: 50%;
+    margin-bottom: 5%;
+}
+
+.glass {
+    background: rgba(255, 255, 255, 0.356);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.7px);
+    -webkit-backdrop-filter: blur(7.7px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.avis {
+    background: rgba(255, 255, 255, 0.356);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.7px);
+    -webkit-backdrop-filter: blur(7.7px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin-top: 1%;
+    width: 50%;
+    display: flex;
+    margin-bottom: 20%;
+    opacity: 0;
+    transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1);
+}
+
+.avis.visible {
+    opacity: 1;
+}
+
+p {
+    padding: 2%;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.v {
+    float: left;
+    width: 50%;
+}
+
+.r {
+    float: right;
+    width: 50%;
+}
+
+.yahya {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 30%;
+    height: auto;
+    z-index: 5;
+    display: none;
+    opacity: O;
+    transition: opacity 0.5s ease;
+}
+
+.remi {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 30%;
+    height: auto;
+    z-index: 5;
+    display: none;
+    opacity: O;
+    transition: opacity 0.5s ease;
+}
+
+.carte {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #FFA500;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+    display: none;
+}
